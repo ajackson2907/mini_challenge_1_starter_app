@@ -1,9 +1,16 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mini_challenge_1_theming/scenery.dart';
 import 'package:mini_challenge_1_theming/themes/my_theme.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  LicenseRegistry.addLicense(() async* {
+    final licence = await rootBundle.loadString('google_fonts/OFL.txt');
+    yield LicenseEntryWithLineBreaks(['google_fonts'], licence);
+  });
+
   runApp(
     ChangeNotifierProvider<MyTheme>(
       create: (_) => MyTheme(),
